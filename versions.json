@@ -1,7 +1,8 @@
 {
   "name": "fossa",
   "devices": [
-    "esp32"
+    "esp32",
+    "esp32s3"
   ],
   "versions": [
     "v0.4.5"

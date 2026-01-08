@@ -1,6 +1,11 @@
 PCB/Fossa PCB-backups
 PCB/Gerbers
-build
+build/
+build-test/
 .venv
 .cache
 fossa/hardcoded_user_config.h
+fossa-plus/hardcoded_user_config.h
+*.bin
+*.elf
+*.map
