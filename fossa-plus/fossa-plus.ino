@@ -104,10 +104,20 @@ bool touchWasReleased() {
 }
 
 void setup() {
-  translateAll(language);
   Serial.begin(115200);
   delay(1000);
+
+  // Initialize display FIRST (critical for WT32-SC01 PLUS)
   Serial.println("=== WT32-SC01 PLUS Starting ===");
+  Serial.println("Initializing display...");
+  tft.init();
+  tft.setRotation(1);
+  tft.setBrightness(255);
+  tft.fillScreen(TFT_BLACK);
+  Serial.println("Display initialized");
+
+  // Now initialize other peripherals
+  translateAll(language);
   Serial.println(workingT);
 
   // Initialize I2C and touch controller
@@ -116,9 +126,8 @@ void setup() {
   Serial.println("Touch initialized");
 
   FlashFS.begin(FORMAT_ON_FAIL);
-  tft.init();
-  tft.setRotation(1);
-  tft.setBrightness(255);
+  Serial.println("SPIFFS initialized");
+
   printMessage("", "Loading..", "", TFT_WHITE, TFT_BLACK);
   printMessage("", "Loading..", "", TFT_BLACK, TFT_WHITE);
 
